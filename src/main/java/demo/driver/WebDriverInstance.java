@@ -15,7 +15,7 @@ public class WebDriverInstance {
     public static void initialize(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("incognito");
-        options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WIN10);
+        options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WINDOWS);
         options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
         webDriver = new ChromeDriver(options);
         webDriver.manage().window().maximize();

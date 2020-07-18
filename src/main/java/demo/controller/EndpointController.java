@@ -21,10 +21,9 @@ public class EndpointController {
         Response response = RestAssured
                 .given()
                 .baseUri("http://jsonplaceholder.typicode.com")
-                .basePath("/post")
                 .header("Content-type","application/json")
                 .header("Accept","application/json")
-                .post();
+                .post("/posts");
         return response;
     }
 }
