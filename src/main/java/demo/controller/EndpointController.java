@@ -17,13 +17,12 @@ public class EndpointController {
         System.out.println(response.getStatusCode());
     }
 
-    public Response postEndPoint(){
-        Response response = RestAssured
+    public Response postEndPoint(Request request){
+        return RestAssured
                 .given()
                 .baseUri("http://jsonplaceholder.typicode.com")
                 .header("Content-type","application/json")
                 .header("Accept","application/json")
                 .post("/posts");
-        return response;
     }
 }
