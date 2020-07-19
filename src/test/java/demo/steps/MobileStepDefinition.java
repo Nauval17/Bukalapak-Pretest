@@ -18,13 +18,13 @@ public class MobileStepDefinition {
         Assert.assertTrue(status);
     }
 
-    @When("User input registered username {string}")
-    public void userInputRegisteredUsername(String email) {
+    @When("User input app username {string}")
+    public void userInputAppUsername(String email) {
         loginPage.inputEmail(email);
     }
 
-    @And("User input registered password {string}")
-    public void userInputRegisteredPassword(String password) {
+    @And("User input app password {string}")
+    public void userInputAppPassword(String password) {
         loginPage.inputPass(password);
     }
 
@@ -37,5 +37,18 @@ public class MobileStepDefinition {
     public void userIsOnAppHomePage() {
         boolean status = homePage.isOnHome();
         Assert.assertTrue(status);
+    }
+
+
+    @Then("User see toast message")
+    public void userSeeToastMessage() {
+        boolean displayed = loginPage.toastMessage();
+        Assert.assertTrue(displayed);
+    }
+
+    @Then("User see warning message")
+    public void userSeeWarningMessage() {
+        boolean displayed = loginPage.warningMessage();
+        Assert.assertTrue(displayed);
     }
 }

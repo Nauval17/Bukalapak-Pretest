@@ -21,4 +21,12 @@ public class MobileLoginPage implements MobileLoginPageLocator {
     public void clickLogin(){
         pageObject.clickOn(LOGIN_BUTTON);
     }
+
+    public boolean warningMessage(){
+        return pageObject.checkIfDisplayed(WARNING_EMAIL);
+    }
+
+    public boolean toastMessage(){
+        return pageObject.checkIfDisplayed(TOAST_MESSAGE);
+    }
 }

@@ -1,6 +1,8 @@
 package demo.steps;
 
 import demo.pages.web.WebHomePage;
+import demo.pages.web.WebLoginFacebookPage;
+import demo.pages.web.WebLoginGooglePage;
 import demo.pages.web.WebLoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -11,6 +13,8 @@ import org.junit.Assert;
 public class WebStepDefinition {
     WebHomePage homePage = new WebHomePage();
     WebLoginPage loginPage = new WebLoginPage();
+    WebLoginFacebookPage facebookPage = new WebLoginFacebookPage();
+    WebLoginGooglePage googlePage = new WebLoginGooglePage();
 
     @Given("User open Bukalapak website")
     public void userOpenBukalapakWebsite() {
@@ -78,5 +82,65 @@ public class WebStepDefinition {
     @Then("User log out")
     public void userLogOut() {
         homePage.logOut();
+    }
+
+    @And("User choose to login via facebook")
+    public void userChooseToLoginViaFacebook() {
+        loginPage.viaFacebook();
+    }
+
+    @And("User is on facebook login page")
+    public void userIsOnFacebookLoginPage() {
+        boolean status = facebookPage.loginPage();
+        Assert.assertTrue(status);
+    }
+
+    @And("User input facebook username {string}")
+    public void userInputFacebookUsername(String email) {
+        facebookPage.inputEmail(email);
+    }
+
+    @And("User input facebook password {string}")
+    public void userInputFacebookPassword(String password) {
+        facebookPage.inputPassword(password);
+        facebookPage.loginButton();
+    }
+
+    @And("User confirm facebook account")
+    public void userConfirmFacebookAccount() {
+        facebookPage.confirmAccount();
+    }
+
+    @And("User choose to login via google")
+    public void userChooseToLoginViaGoogle() {
+        loginPage.viaGoogle();
+    }
+
+    @And("User is on google account choosing")
+    public void userIsOnGoogleAccountChoosing() {
+        boolean status = googlePage.isOnPage();
+        Assert.assertTrue(status);
+    }
+
+    @And("User choose google account {string}")
+    public void userChooseGoogleAccount(String account) {
+        googlePage.chooseAccount(account);
+    }
+
+    @And("User choose another account {string}")
+    public void userChooseAnotherAccount(String account) {
+        googlePage.chooseAccount(account);
+    }
+
+    @And("User input google email {string}")
+    public void userInputGoogleEmail(String email) {
+        googlePage.inputEmail(email);
+        googlePage.goToPass();
+    }
+
+    @And("User input google password {string}")
+    public void userInputGooglePassword(String password) {
+        googlePage.inputPassword(password);
+        googlePage.confirm();
     }
 }
