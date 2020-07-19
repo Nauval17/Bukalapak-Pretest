@@ -2,7 +2,7 @@ package demo.locator.web;
 
 import org.openqa.selenium.By;
 
-public interface LoginPageLocator {
+public interface WebLoginPageLocator {
     By LOGIN_TEXT = By.xpath("//div[contains(text(),'masuk')]");
     By INPUT_USERNAME = By.id("user_session_username");
     By INPUT_PASSWORD = By.id("user_session_password");

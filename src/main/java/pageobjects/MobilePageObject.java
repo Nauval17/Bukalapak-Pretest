@@ -1,5 +1,6 @@
 package pageobjects;
 
+import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,9 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static demo.driver.WebDriverInstance.webDriver;
+import static demo.driver.AndroidDriverInstance.androidDriver;
 
-public class WebPageObject {
+public class MobilePageObject {
     /**
      * Perform action to click button or clickable element,
      * will wait until the element is enabled.
@@ -17,7 +18,7 @@ public class WebPageObject {
      */
     public void clickOn(By id) {
         waitUntilEnabled(id);
-        WebElement button = webDriver.findElement(id);
+        AndroidElement button = androidDriver.findElement(id);
         button.click();
     }
 
@@ -30,7 +31,7 @@ public class WebPageObject {
      */
     public void typeON(By id, String text) {
         waitUntilDisplayed(id);
-        WebElement field = webDriver.findElement(id);
+        AndroidElement field = androidDriver.findElement(id);
         field.clear();
         field.sendKeys(text);
     }
@@ -41,7 +42,7 @@ public class WebPageObject {
      * @param id locator of element
      */
     public boolean waitUntilDisplayed(By id) {
-        WebDriverWait wait = new WebDriverWait(webDriver, 30);
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(id));
         return element.isDisplayed();
     }
@@ -52,7 +53,7 @@ public class WebPageObject {
      * @param id locator of element
      */
     public boolean waitUntilEnabled(By id) {
-        WebDriverWait wait = new WebDriverWait(webDriver, 5);
+        WebDriverWait wait = new WebDriverWait(androidDriver, 5);
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(id));
         return element.isEnabled();
     }
@@ -64,7 +65,7 @@ public class WebPageObject {
      * @return return condition
      */
     public boolean checkIfDisplayed(By id) {
-        WebElement element = webDriver.findElement(id);
+        AndroidElement element = androidDriver.findElement(id);
         return element.isDisplayed();
     }
 
@@ -75,7 +76,7 @@ public class WebPageObject {
      * @return return condition
      */
     public boolean checkIfEnabled(By id) {
-        WebElement element = webDriver.findElement(id);
+        AndroidElement element = androidDriver.findElement(id);
         return element.isEnabled();
     }
 
@@ -86,7 +87,7 @@ public class WebPageObject {
      * @return return condition
      */
     public String checkToast(By id) {
-        WebElement toast = webDriver.findElement(id);
+        AndroidElement toast = androidDriver.findElement(id);
         return toast.getAttribute("name");
     }
 
@@ -96,8 +97,8 @@ public class WebPageObject {
      * @param locator locator where the element is
      */
     public void multipleID(String name, By locator) {
-        List<WebElement> filters = webDriver.findElements(locator);
-        for (WebElement filter : filters) {
+        List<AndroidElement> filters = androidDriver.findElements(locator);
+        for (AndroidElement filter : filters) {
             if (filter.getText().contains(name)) {
                 filter.click();
                 break;
@@ -116,8 +117,7 @@ public class WebPageObject {
      * @return return the size of locator that appeared
      */
     public boolean checkElement(By locator) {
-        List<WebElement> elements = webDriver.findElements(locator);
+        List<AndroidElement> elements = androidDriver.findElements(locator);
         return elements.size() > 0;
     }
-
 }

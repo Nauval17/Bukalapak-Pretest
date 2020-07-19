@@ -1,9 +1,9 @@
 package demo.pages.web;
 
-import demo.locator.web.LoginPageLocator;
+import demo.locator.web.WebLoginPageLocator;
 import pageobjects.WebPageObject;
 
-public class WebLoginPage implements LoginPageLocator {
+public class WebLoginPage implements WebLoginPageLocator {
     WebPageObject pageObject = new WebPageObject();
 
     public boolean isOnPage(){

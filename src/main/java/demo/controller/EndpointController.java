@@ -23,6 +23,7 @@ public class EndpointController {
                 .baseUri("http://jsonplaceholder.typicode.com")
                 .header("Content-type","application/json")
                 .header("Accept","application/json")
+                .body(request)
                 .post("/posts");
     }
 }

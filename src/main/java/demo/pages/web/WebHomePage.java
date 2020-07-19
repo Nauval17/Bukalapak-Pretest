@@ -1,10 +1,10 @@
 package demo.pages.web;
 
 import demo.driver.WebDriverInstance;
-import demo.locator.web.HomePageLocator;
+import demo.locator.web.WebHomePageLocator;
 import pageobjects.WebPageObject;
 
-public class WebHomePage implements HomePageLocator {
+public class WebHomePage implements WebHomePageLocator {
     WebPageObject pageObject = new WebPageObject();
 
     public void openPage(){
