@@ -23,5 +23,6 @@ public class EndpointCheck {
         Response response = controller.postEndPoint(request);
         response.getBody().prettyPrint();
         System.out.println(response.getStatusCode());
+        System.out.println(response.path("title").toString());
     }
 }
